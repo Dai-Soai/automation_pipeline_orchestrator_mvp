@@ -4,6 +4,7 @@ import argparse
 import sys
 
 from automation_pipeline_orchestrator.loader import PipelineLoadError, load_pipeline
+from automation_pipeline_orchestrator.logger import write_pipeline_log
 from automation_pipeline_orchestrator.orchestrator import run_pipeline
 
 
@@ -23,6 +24,10 @@ def build_parser() -> argparse.ArgumentParser:
         "pipeline_file",
         help="Path to pipeline YAML file.",
     )
+    run_parser.add_argument(
+        "--log-json",
+        help="Write pipeline execution log to a JSON file.",
+    )
 
     return parser
 
@@ -41,6 +46,10 @@ def run_command(args: argparse.Namespace) -> int:
     print(f"Pipeline completed: {result.pipeline_id}")
     print(f"Status: {result.status}")
     print(f"Stages executed: {result.stages_executed}")
+
+    if args.log_json:
+        log_info = write_pipeline_log(result, args.log_json)
+        print(f"Pipeline log written: {log_info['log_path']}")
 
     if result.error:
         print(f"Error: {result.error}", file=sys.stderr)
