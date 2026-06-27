@@ -1,0 +1,12 @@
+pipeline_id: sample_file_to_notification
+version: "0.1.0"
+
+workflow:
+  command: workflow-runner
+  workflow_file: examples/workflow.sample.yaml
+  log_json: logs/execution.sample.json
+
+notification:
+  command: telegram-notifier
+  mode: send-log
+  log_file: logs/execution.sample.json
