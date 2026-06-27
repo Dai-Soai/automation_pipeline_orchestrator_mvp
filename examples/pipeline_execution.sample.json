@@ -1,0 +1,36 @@
+{
+  "event_type": "pipeline_execution",
+  "timestamp": "2026-06-27T18:05:00+00:00",
+  "pipeline_id": "sample_file_to_notification",
+  "status": "success",
+  "stages_executed": 2,
+  "error": null,
+  "stages": [
+    {
+      "stage_id": "workflow",
+      "status": "success",
+      "command": [
+        "workflow-runner",
+        "run",
+        "examples/workflow.sample.yaml",
+        "--log-json",
+        "logs/execution.sample.json"
+      ],
+      "exit_code": 0,
+      "output": "Workflow completed: sample_summary_workflow",
+      "error": null
+    },
+    {
+      "stage_id": "notification",
+      "status": "success",
+      "command": [
+        "telegram-notifier",
+        "send-log",
+        "logs/execution.sample.json"
+      ],
+      "exit_code": 0,
+      "output": "Telegram workflow notification sent",
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "event_type": "file_detected",
+  "source_utility": "file_watcher_automation_mvp",
+  "event_id": "sample-file-event-001",
+  "file_path": "data/inbox/sample.txt",
+  "pipeline_file": "pipelines/sample.pipeline.yaml"
+}
