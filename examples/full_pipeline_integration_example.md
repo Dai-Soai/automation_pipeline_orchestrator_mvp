@@ -32,18 +32,28 @@ Utility #7 owns:
 
 - file detection
 - file event JSON
+- inbox/archive movement
+- file watcher event log
 
 Utility #8 owns:
 
-- workflow execution
+- workflow YAML loading
+- workflow validation
+- sequential step execution
+- workflow execution log JSON
 
 Utility #9 owns:
 
-- telegram notification
+- workflow execution log reading
+- notification formatting
+- Telegram delivery
 
 Utility #10 owns:
 
-- pipeline orchestration
+- pipeline YAML loading
+- orchestration order
+- CLI adapter execution
+- pipeline execution log JSON
 
 ## Locked Decision
 
